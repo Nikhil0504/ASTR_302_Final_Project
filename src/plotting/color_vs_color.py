@@ -17,7 +17,6 @@ plt.rcParams['ytick.major.size'] = 4
 plt.rcParams['ytick.minor.size'] = 2
 
 cat = Table.read('../../catalogs/master_catalog_f444w_astropy.cat', format='ascii', delimiter=' ')
-# cat = Table.read('/Users/nikhilgaruda/Downloads/G191cats/mastercat.eazycat', format='ascii')
 zout = Table.read('../../catalogs/g165_444w_astropy.eazypy.zout.fits', format='fits')
 
 z_phot = zout['z_phot']
