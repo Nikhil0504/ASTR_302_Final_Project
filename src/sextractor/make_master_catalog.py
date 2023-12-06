@@ -145,7 +145,7 @@ class CatalogProcessor:
         return sn_table
 
 # Example usage
-processor = CatalogProcessor('../../sextractor/F444W/', 'F444W', '../../catalogs/master_catalog_f444w_astropy.cat', sn=4.)
-processor.set_aperture_col('MAG_APER_2', 'MAGERR_APER_2')
+processor = CatalogProcessor('../../sextractor/F444W/', 'F444W', '../../catalogs/master_catalog_f444w_astropy.cat', sn=2.)
+processor.set_aperture_col('MAG_APER_1', 'MAGERR_APER_1')
 processor.process_catalogs()
 processor.get_sn_table()

@@ -14,14 +14,14 @@ PARAMETERS_NAME  g165_sed.param  # name of the file containing catalog contents
 DETECT_TYPE      CCD            # CCD (linear) or PHOTO (with gamma correction)
 DETECT_MINAREA   10              # min. # of pixels above threshold
 THRESH_TYPE      RELATIVE #ABSOLUTE
-DETECT_THRESH    2.5  #0.015            # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
-ANALYSIS_THRESH  3.0  #0.020            # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+DETECT_THRESH    2.0  #0.015            # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+ANALYSIS_THRESH  2.5  #0.020            # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
  
 FILTER           N              # apply filter for detection (Y or N)?
 FILTER_NAME      /Users/nikhilgaruda/Documents/Astronomy_Research/Software/sextractor-2.19.5/config/gauss_4.0_7x7.conv   # name of the file containing the filter
  
-DEBLEND_NTHRESH  32             # Number of deblending sub-thresholds
-DEBLEND_MINCONT  0.001          # Minimum contrast parameter for deblending
+DEBLEND_NTHRESH  64             # Number of deblending sub-thresholds
+DEBLEND_MINCONT  0.0001          # Minimum contrast parameter for deblending
  
 CLEAN            Y              # Clean spurious detections? (Y or N)?
 CLEAN_PARAM      1.0            # Cleaning efficiency
