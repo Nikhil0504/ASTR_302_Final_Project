@@ -115,6 +115,6 @@ axes[0].legend(loc='upper left', bbox_to_anchor=(0.0, 1.0), fontsize=8, frameon=
 axes[0].legend(loc='upper left', bbox_to_anchor=(0.0, 1.0), fontsize=8, frameon=True)
 
 
-plt.savefig('../../plotting/color_vs_color_f444w_astropy_g191.png', bbox_inches='tight', dpi=300)
+plt.savefig('../../plotting/color_vs_color_f444w_astropy_g165.png', bbox_inches='tight', dpi=300)
 plt.show()
 
