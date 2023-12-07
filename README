@@ -1,3 +1,18 @@
-This is a repo for ASTR 302 Final Project.
+# ASTR 302 - Final Project (Nikhil Garuda)
 
-Will update README.md later.
+This project focuses on understanding how photometric redshifts can be estimated for a lensed cluster. 
+We do detailed analysis on the images and do aperture corrections and PSF matching to generate SED fits to get photometric redshift estimates.
+This is the tested for accuracy with the spectroscopic redshifts for several sources.
+
+## Steps
+1. Obtain images from MAST (JWST DD: 4446)
+2. Fix the different pixel scales by reprojecting it to the detection filter (F444W).
+3. Obtain emperical PSFs using `WebbPSF` with the images.
+4. Create convolution kernels and do PSF matching to the detection filter and convolve it to each filter.
+5. Use SourceExtractor to generate segmentation maps and get the raw catalogs for each filter.
+6. Make the final photometry catalog using the Merlin et al. 2022 procedure with 0.66" diameters.
+7. Run SED fits with `EAZYpy`.
+8. Create color-color plots and color-magnitude plots for the cluster to check the dynamics of it.
+9. Test the photometry catalog with the original catalog from Frye et al. 2023.
+10. Make a specz-photoz plot with dispersions to find if the redshifts are accurate or not. (Still in process).
+
