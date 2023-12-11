@@ -1,0 +1,447 @@
+%% Beginning of file 'sample631.tex'
+%%
+%% Modified 2022 May  
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.31 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls and other external packages such as
+%% latexsym, graphicx, amssymb, longtable, and epsf.  Note that as of 
+%% Oct 2020, APS now uses revtex4.2e for its journals but remember that 
+%% AASTeX v6+ still uses v4.1. All of these external packages should 
+%% already be present in the modern TeX distributions but not always.
+%% For example, revtex4.1 seems to be missing in the linux version of
+%% TexLive 2020. One should be able to get all packages from www.ctan.org.
+%% In particular, revtex v4.1 can be found at 
+%% https://www.ctan.org/pkg/revtex4-1.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%% using aastex version 6.3
+\documentclass[twocolumn,linenumbers]{aastex631}
+
+\usepackage{float}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be invoked like this:
+%%
+%% \documentclass[arguments]{aastex631}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Supresses an abstract. Originally for RNAAS manuscripts 
+%%                but now that abstracts are required this is obsolete for
+%%                AAS Journals. Authors might need it for other reasons. DO NOT
+%%                use \begin{abstract} and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default
+%%   linenumbers  : turn on lineno package.
+%%   trackchanges : required to see the revision mark up and print its output
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
+%%                  for dual anonymous review.
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex631}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\newcommand{\todo}[1]{\texttt{TODO: #1}}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+%\received{March 1, 2021}
+%\revised{April 1, 2021}
+%\accepted{\today}
+
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+%\submitjournal{PSJ}
+
+%% For manuscript that include authors in collaborations, AASTeX v6.31
+%% builds on the \collaboration command to allow greater freedom to 
+%% keep the traditional author+affiliation information but only show
+%% subsets. The \collaboration command now must appear AFTER the group
+%% of authors in the collaboration and it takes TWO arguments. The last
+%% is still the collaboration identifier. The text given in this
+%% argument is what will be shown in the manuscript. The first argument
+%% is the number of author above the \collaboration command to show with
+%% the collaboration text. If there are authors that are not part of any
+%% collaboration the \nocollaboration command is used. This command takes
+%% one argument which is also the number of authors above to show. A
+%% dashed line is shown to indicate no collaboration. This example manuscript
+%% shows how these commands work to display specific set of authors 
+%% on the front page.
+%%
+%% For manuscript without any need to use \collaboration the 
+%% \AuthorCollaborationLimit command from v6.2 can still be used to 
+%% show a subset of authors.
+%
+%\AuthorCollaborationLimit=2
+%
+%% will only show Schwarz & Muench on the front page of the manuscript
+%% (assuming the \collaboration and \nocollaboration commands are
+%% commented out).
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+\shorttitle{Photometry and Spectroscopy of lensing clusters}
+\shortauthors{Garuda}
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{Detailed analysis of photometry and spectroscopy of lensing clusters}
+
+\author[0000-0003-3418-2482]{Nikhil Garuda}
+\affiliation{Department of Astronomy/Steward Observatory, University of Arizona, \\ 933 N. Cherry Avenue, Tucson, AZ 85721, USA}
+\email{nikhilgaruda@arizona.edu}
+
+%% Note that the \and command from previous versions of AASTeX is now
+%% depreciated in this version as it is no longer necessary. AASTeX 
+%% automatically takes care of all commas and "and"s between authors names.
+
+%% AASTeX 6.31 has the new \collaboration and \nocollaboration commands to
+%% provide the collaboration status of a group of authors. These commands 
+%% can be used either before or after the list of corresponding authors. The
+%% argument for \collaboration is the collaboration identifier. Authors are
+%% encouraged to surround collaboration identifiers with ()s. The 
+%% \nocollaboration command takes no argument and exists to indicate that
+%% the nearby authors are not part of surrounding collaborations.
+
+%% Mark off the abstract in the ``abstract'' environment. 
+\begin{abstract}
+
+This study presents a detailed analysis of the lensing clusters particularly G165 at redshift z = 0.35, focusing on photometry and spectroscopy. Leveraging observations from JWST NIRCam/NIRSpec spectroscopy, the analysis explores the gravitational lensing effects, revealing the cluster's unique characteristics and providing insights into its mass estimation and luminosity. The photometry analysis, conducted using \texttt{SExtractor} and \texttt{EAZY} tools, emphasizes a nuanced understanding of multi-band photometry and photometric redshift estimation. Challenges in reconciling photometric and spectroscopic redshifts are discussed, attributing the $\pm0.2$ dispersion to various observational factors. Detailed data processing methodologies, including PSF matching and image reprojection, are outlined, along with proposed enhancements to mitigate noise and improve uncertainties in flux measurements. The study highlights the limitations due to data availability and suggests strategies for future improvements in observational techniques. Overall, this analysis offers valuable insights into the complexities of lensing clusters, emphasizing the need for refined observational methodologies and data processing techniques to unravel the detailed composition and properties of such cosmic phenomena.
+
+\end{abstract}
+
+%% Keywords should appear after the \end{abstract} command. 
+%% The AAS Journals now uses Unified Astronomy Thesaurus concepts:
+%% https://astrothesaurus.org
+%% You will be asked to selected these concepts during the submission process
+%% but this old "keyword" functionality is maintained in case authors want
+%% to include these concepts in their preprints.
+% \keywords{Classical Novae (251) --- Ultraviolet astronomy(1736) --- History of astronomy(1868) --- Interdisciplinary astronomy(804)}
+
+%% From the front matter, we move on to the body of the paper.
+%% Sections are demarcated by \section and \subsection, respectively.
+%% Observe the use of the LaTeX \label
+%% command after the \subsection to give a symbolic KEY to the
+%% subsection for cross-referencing in a \ref command.
+%% You can use LaTeX's \ref and \label commands to keep track of
+%% cross-references to sections, equations, tables, and figures.
+%% That way, if you change the order of any elements, LaTeX will
+%% automatically renumber them.
+%%
+%% We recommend that authors also use the natbib \citep
+%% and \citet commands to identify citations.  The citations are
+%% tied to the reference list via symbolic KEYs. The KEY corresponds
+%% to the KEY in the \bibitem in the reference list below. 
+
+\section{Introduction} \label{sec:intro}
+It was long known since the early days of modern cosmology that the universe was expanding (\cite{1929PNAS...15..168H, 1931MNRAS..91..483L, hubble1931velocity}). During this time, \cite{zwicky1933rotverschiebung} also suggested that there was some unseen matter that was the likely dominant mass component in clusters of galaxies. \cite{zwicky1937nebulae} further noted that gravitational lensing by clusters would be invaluable to: (i) trace and measure the amount of this unseen mass, now referred to as dark matter; and (ii) study magnified distant objects lying behind clusters.
+
+Lensing clusters are very important part in the understanding of $\Lambda$CDM model of our universe and gives us an insight of how it was created.
+
+\section{Motivation} \label{sec:motivation}
+For the purposes of this project, we will be understanding the photometry of the clusters that can be further be used in lens models to make detailed analysis on the amount of baryonic and dark matter in the cluster. We will be then also testing the reliability of the photometry using the spectroscopy either extracted from the datasets mention in \S  \ref{sec:datasets} or using archival data from \texttt{MAST}.
+
+Due to time constraints, we were only able to focus on one cluster, namely, PLCK G165.7+67.0 (hereafter G165), which shows strong-lensing constraints in the form of giant arcs and image multiplicities.
+
+\subsection{G165}
+The galaxy cluster G165 ($z$ = 0.35) first got attention by gravitationally amplifying a single, apparently-bright galaxy in the background. It was boosted to an observed sub-mm flux density of $S_{350 \mu m} > 700$ mJy (\cite{canameras2015planck, harrington2016early}), making it detectable by the \textit{Planck} and \textit{Herschel Space Observatory} missions (\cite{ade2016xxvi, aghanim2020planck}). 
+
+G165 is a double-cluster with two prominent cluster cores, its X-ray luminosity is lower than galaxy clusters of a similar redshift, and its mass, based on the \textit{Planck} SZ Compton-Y map, yields only an upper limit. These properties arise in part because the cluster has a relatively-small mass of $2-3 \times 10^{14} \rm{M_\sun}$ (\cite{frye2019plck, pascale2022possible}), and in part because the source responsible for the high restframe far-infrared flux density is not the entire galaxy cluster but a only portion of a single lensed source that is a dusty and high star forming galaxy (DSFG).
+
+HST WFC3-IR imaging enabled the identification of large sets of image systems and the construction of lens models (\cite{frye2019plck}). These models confirmed both the northeastern (NE) and southwestern (SW) cores of this binary cluster, and the high, cluster-scale mass. This earlier work was built and expanded upon by the addition of robust photometric redshift estimates across ground and space-based data sets for three of the 11 image systems and several cluster members (\cite{pascale2022possible}). Yet, these models were anchored on the spectroscopic redshift for only one image system, thereby limiting the accuracy of the resulting lens model and its ability to recover the lensed image positions (\cite{johnson2016systematics}).
+
+Additional, observations were taken using JWST/NIRCam as a part of the Prime Extragalactic Areas for Reionization and Lensing Science (PEARLS) program (\cite{windhorst2022jwst}) and also as part of a JWST disruptive DDT program (PID 4446, PI: Frye) that had a detailed analysis covered in \cite{frye2023jwst}. 
+
+\section{Data} \label{sec:data}
+
+\subsection{Datasets} \label{sec:datasets}
+The observations for this project were done using NIRCam that was obtained as part of a JWST disruptive DDT program (PID 4446, PI: Frye) to follow the supernova’s light curve in each of its three images. Exposures were taken in six filters using only Module B of NIRCam. The exposure times are recorded in Table \ref{tab:exptimes}. We will only be using one of the epochs for this project (Epoch 3).
+
+
+\begin{table}[h!] 
+    \centering
+    \begin{tabular}{c|c}
+        Filter & Exposure \\\hline
+        F090W & 1417\\
+        F115W & ...\\
+        F150W & 1246\\
+        F200W & 1761\\
+        F277W & 1761\\
+        F356W & 1246\\
+        F410M & ...\\
+        F444W & 1417\\
+    \end{tabular}
+    \caption{JWST Filters and NIRCam Exposure Times in seconds for Epoch 3.}
+    \label{tab:exptimes}
+\end{table}
+
+NIRSpec medium-resolution Micro-Shutter Array (MSA) spectroscopy of the G165 field was obtained on 2023 Apr 22. The MSA mask was populated with the positions of the three SN appearances and two of the three images of the SN host galaxy, followed by counter-images of three other image systems. The remainder of the mask was filled with other lensed sources which summed to a total of 42 lensed targets. 
+
+The observations used the grating/filter combinations G140M/F100LP to cover spectral range 0.97–1.84 $\mu $m (rest-frame 0.35–0.66 $\mu$m at $z$ = 1.8) and G235M/F170LP to cover 1.66–3.17 $\mu$m ($z$ = 1.8 rest-frame 0.57–1.1 $\mu$m), both with spectral resolution R $\sim$ 1000. There was also a PRISM/CLEAR spectrum covering 0.7–5.3 $\mu$m (rest-frame 0.25–1.9 $\mu$m) with R $\sim$ 20–300 (50–14 $\AA$).
+
+\subsection{Data Processing} \label{sec:process}
+This report only covers the processing of the images for the photometry and there will be a separate report (Matlock in prep.) that will focus on the spectroscopy aspect of this project.
+
+We first obtained the images via \texttt{MAST} and the latest photometric calibration files were used (pmap\_1126). All the Short Wavelength (SW) and Long Wavelength (LW) images were then isolated to obtain the science and weight images.
+
+We then reprojected all the SW and LW images to a constant pixel scale of 0.06" as that is the scale of the detection image (F444W). This was doing using Astropy packages \texttt{reproject} and \texttt{astroalign}. \texttt{Astroalign} outperforms \texttt{reproject} in producing astrometrically precise image alignment, but fails when images are significantly misaligned. Hence, we first apply \texttt{reproject}, which transforms images to the same orientation and pixel scale based on the World Coordinate System (WCS) header information. We then follow up on this step by applying the \texttt{astroalign} task in order to triangulate the source centroid positions and to calculate a revised value for the reprojection according to \cite{2020A&C....3200384B}. 
+%Beroiz et al. (2020)
+
+\subsection{PSF Matching} \label{sec:psf}
+Using the matched images, each image was convolved with a kernel to match the PSF of the F444W image. Each kernel was created using \texttt{webbpsf} with an oversampling value. Then we create a matching kernel by taking the ratio of the PSF of the two images as per convolution theorem. This therefore is the integral of two quantities is equivalent to their multiplication in Fourier space. 
+By convolution theorem,
+    $K = \mathcal{F}^{-1}(\mathcal{F}(\rm{PSF_1}/\mathcal{F}(\rm{PSF_2}))$. 
+We also apply a simple Cosine window function prior to convolution to eliminate any spurious modes picked up by noise.
+This procedure is adapted from (\cite{pascale2022possible}). % pascale 2022.
+
+\section{Photometry} \label{sec:photo}
+
+\subsection{SExtractor} \label{sec:se}
+We perform multi-band photometry using \texttt{SExtractor} (\cite{1996A&AS..117..393B}) by implementing a two-step \textit{HOT+COLD} method according to prescription in \cite{galametz2013candels}. The \textit{COLD} parameter is tuned to detect bright, extended galaxies while the \textit{HOT} parameter is set to be optimized to detect fainter galaxies not included in the preceeding \textit{COLD} mode run. The \texttt{SExtractor} used to make the initial object catalog is described in Table \ref{tab:params}. 
+
+The JWST NIRCam F444W image was assigned as the reference image since it corresponds to the diffraction limit of the telescope. All the images are matched to this reference image with the procedure aforementioned in \S \ref{sec:psf}. This lets us disregard aperture corrections and use the approaches of \cite{merlin2022early, paris2023glass} to make the final multi-band photometry catalog. These procedures balance the need to make faint image detections while also limiting the introduction of spurious sources.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c|c}
+        Parameter & Value \\ \hline
+        DETECT\_MINAREA & 10 \\
+        DETECT\_THRESH & 2.0 \\
+        ANALYSIS\_THRESH & 2.5 \\
+        DEBLEND\_NTHRESH & 64 \\
+        DEBLEND\_MINCONT & 0.0001 \\
+    \end{tabular}
+    \caption{SExtractor Parameters for the object catalogs}
+    \label{tab:params}
+\end{table}
+
+The final photometry catalog utilises the procedures mentioned above using circular apertures for each source of diameter 0''.66 . This was done since the study for this project doesn't have a key focus on the extended galaxies but rather general understanding of detailed photometry analysis for lensing clusters. 
+
+\subsection{EAZY}
+
+For the purposes of this project, we used EAZY (\cite{brammer2008eazy}) to estimate photometric redshifts. SED templates were optimised for identification of galaxies using FSPS templates.
+
+We were able to match only 7 sources with the spectroscopy sources that were in \cite{frye2023jwst}. Overall, there has been a dispersion of $\pm 0.2$ in $z$ which was to be expected due to pitfalls of having lower exposure times in the Epoch 3 and also different pixel scales in SW and LW filters.
+
+\begin{figure}[H]
+    \centering\includegraphics[width=0.9\linewidth]{specz_photoz.png}
+    \caption{Photometric vs. spectroscopic redshifts. Points depict redshifts by (Matlock in prep; \cite{frye2023jwst}) as indicated in the legend. The panel on the right gives the histogram of photometric redshifts using EAZY.}
+    \label{fig:spzph}
+\end{figure}
+
+A photometric redshift is considered secure if the object is: (1) in the field-of-view for all filters, (2) detected in a minimum of six filters, and (3) spatially resolved from its neighbors. The pitfalls of the photometric redshifts will be further discussed in \S \ref{sec:disc}.
+
+Here is a Spectral Energy Distribution (SED) plot for one the sources that has very similar photometric and spectroscopic redshift.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{sed.png}
+    \caption{SED of source NS 46 from \cite{frye2023jwst}. The blue SED is the model templates for the redshift obtained from EAZY and the red is the model from the spectroscopic redshift from (Matlock in prep.).}
+    \label{fig:sed}
+\end{figure}
+
+\section{Discussions} \label{sec:disc}
+
+In order to check the reliability of the catalog we made some color-color and color-magnitude plots to test if the catalog was similar to (\cite{frye2023jwst}). 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{color_vs_color_f444w_astropy_g165.png}
+    \caption{Color vs Color plot made for this project using Epoch 3. Only 6 out of 8 filters are available for this epoch and the the colors are a function of increasing redshift.}
+    \label{fig:cc302}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{color_vs_mag_f444w_astropy_g191.png}
+    \caption{Color vs Magnitude plot made for this project using Epoch 3. Only 6 out of 8 filters are available for this epoch and the colors are a function of increasing redshift.}
+    \label{fig:cm302}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{ccmassimo.png}
+    \caption{Color vs Color plot made with the catalog obtained from the original paper (Pascale priv. comm.). The colors are a function of increasing redshift.}
+    \label{fig:ccmass}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{color_vs_mag_g165.png}
+    \caption{Color vs Color plot made with the catalog obtained from the original paper (Pascale priv. comm.). The colors are a function of increasing redshift.}
+    \label{fig:cmmass}
+\end{figure}
+% \todo{Talk about how we can have better reduction, correction for wisps, mosaics from all the epochs, better pixel scale correction, better PSFs from all these, check for rms uncertainities by injecting point sources, no extended sources in the study, better templates like larson (for high-z objects), compare with massimo's plot}
+
+As mentioned in \S \ref{sec:data}, we only were able to analyse one of the three epochs (Epoch 1 is proprietary). Due to this, we weren't able to get the full coverage and were not able to get a lot more exposure time as well. Some of the things we could improve upon with the image processing steps would be to do an additional correction for the $1/f$ noise by applying the prescription of C. Willott\footnote{https://github.com/chriswillott/jwst.git}.
+
+We can also do additional correction for detector-level offsets, ``wisps,” and ``snowballs” (\cite{robotham2018profound, robotham2023dynamic, robotham2017profit})though it is out of scope for the purposes of this project. One thing that can surely improve the image qualities would be to create a combined mosaic using the process was similar to that first described by \cite{koekemoer2011candels}. This process combines all the epochs and also does the pixel scale correction that will improve the PSFs and the photometry by a lot.
+
+On the photometry side, we can improve the uncertainties of the fluxes obtained by injecting 5000 point sources from \texttt{WebbPSF} of known fluxes into blank regions of the images, and fluxes and uncertainties were estimated using 0.''1 apertures using \texttt{photutils} with the RMS maps associated with the images. This will give more realistic uncertainties similar to \cite{frye2023jwst}.
+
+Another place of improvement, would be to also do correction for extended sources using isophotal photometry and making a separate catalog for that. One thing we could also do is to use templates that is curated for JWST/NIRCam like that of \cite{larson2023spectral}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{test_with_massimo_catalog.png}
+    \caption{Difference in magnitudes with both the catalogs to show the shift in magnitudes. Acts as a source of improvement.}
+    \label{fig:enter-label}
+\end{figure}
+
+\section{Conclusions}
+
+The analysis of G165's lensing effects and photometric-spectroscopic interplay offers valuable insights into understanding the cluster's composition, limitations in measurements, and avenues for refining observational methodologies. Continued improvements in data processing and analysis techniques promise advancements in unraveling the mysteries of lensing clusters.
+
+%% IMPORTANT! The old "\acknowledgment" command has be depreciated. It was
+%% not robust enough to handle our new dual anonymous review requirements and
+%% thus been replaced with the acknowledgment environment. If you try to 
+%% compile with \acknowledgment you will get an error print to the screen
+%% and in the compiled pdf.
+%% 
+%% Also note that the akcnowlodgment environment does not support long amounts of text. If you have a lot of people and institutions to acknowledge, do not use this command. Instead, create a new \section{Acknowledgments}.
+% \begin{acknowledgments}
+% We thank all the people that have made this AASTeX what it is today.  This
+% includes but not limited to Bob Hanisch, Chris Biemesderfer, Lee Brotzman,
+% Pierre Landau, Arthur Ogawa, Maxim Markevitch, Alexey Vikhlinin and Amy
+% Hendrickson. Also special thanks to David Hogg and Daniel Foreman-Mackey
+% for the new "modern" style design. Considerable help was provided via bug
+% reports and hacks from numerous people including Patricio Cubillos, Alex
+% Drlica-Wagner, Sean Lake, Michele Bannister, Peter Williams, and Jonathan
+% Gagne.
+% \end{acknowledgments}
+
+%% To help institutions obtain information on the effectiveness of their 
+%% telescopes the AAS Journals has created a group of keywords for telescope 
+%% facilities.
+%
+%% Following the acknowledgments section, use the following syntax and the
+%% \facility{} or \facilities{} macros to list the keywords of facilities used 
+%% in the research for the paper.  Each keyword is check against the master 
+%% list during copy editing.  Individual instruments can be provided in 
+%% parentheses, after the keyword, but they are not verified.
+
+% \vspace{5mm}
+% \facilities{HST(STIS), Swift(XRT and UVOT), AAVSO, CTIO:1.3m,
+% CTIO:1.5m,CXO}
+
+%% Similar to \facility{}, there is the optional \software command to allow 
+%% authors a place to specify which programs were used during the creation of 
+%% the manuscript. Authors should list each code and include either a
+%% citation or url to the code inside ()s when available.
+
+% \software{astropy \citep{2013A&A...558A..33A,2018AJ....156..123A},  
+%           Cloudy \citep{2013RMxAA..49..137F}, 
+%           Source Extractor \citep{1996A&AS..117..393B}
+%           }
+
+%% For this sample we use BibTeX plus aasjournals.bst to generate the
+%% the bibliography. The sample631.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample631.tex
+%% bibtext sample631
+%% pdflatex sample631.tex
+%% pdflatex sample631.tex
+
+\bibliography{sample631}{}
+\bibliographystyle{aasjournal}
+
+%% This command is needed to show the entire author+affiliation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `sample631.tex'.
